@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+  <changeSet id="1" author="Karolis Grybas">
+    <sql>
+      CREATE TABLE meeting(
+                          id SERIAL PRIMARY KEY NOT NULL,
+                          name VARCHAR(255) NOT NULL,
+                          responsible_person VARCHAR(255) NOT NULL,
+                          description VARCHAR(255) NOT NULL,
+                          category VARCHAR(255) NOT NULL,
+                          type VARCHAR(255) NOT NULL,
+                          start_date TIMESTAMP,
+                          end_date TIMESTAMP
+      );
+    </sql>
+    <rollback>
+      DROP TABLE meeting;
+    </rollback>
+  </changeSet>
+
+  <changeSet id="2" author="Karolis Grybas">
+    <sql>
+      CREATE TABLE person(
+                            id SERIAL PRIMARY KEY NOT NULL,
+                            name VARCHAR(255) NOT NULL
+    );
+    </sql>
+    <rollback>
+      DROP TABLE person;
+    </rollback>
+  </changeSet>
+
+  <changeSet id="3" author="Karolis Grybas">
+    <sql>
+      CREATE TABLE meeting_person(
+                           meeting_id BIGINT REFERENCES meeting(id) ON UPDATE CASCADE,
+                           person_id BIGINT REFERENCES person(id) ON UPDATE CASCADE,
+                           PRIMARY KEY (meeting_id, person_id)
+      );
+    </sql>
+    <rollback>
+      DROP TABLE meeting_person;
+    </rollback>
+  </changeSet>
+
+  <changeSet id="4" author="Karols Grybas">
+    <sql>
+      INSERT INTO person(name)
+      VALUES ('Jonas Jonauskas'),
+             ('Antanas Sadauskas'),
+             ('Mantas Patarakas'),
+             ('Mantas Stonkus');
+    </sql>
+    <rollback>
+      INSERT INTO person;
+    </rollback>
+  </changeSet>
+
+  <changeSet id="5" author="Karolis Grybas">
+    <sql>
+      INSERT INTO meeting(name, responsible_person, description, category, type, start_date, end_date)
+      VALUES ('Java meetas', 'Antanas Sadauskas', 'testuojam', 'HUB', 'LIVE', '2023-01-20 10:00:00', '2023-01-20 11:00:00'),
+             ('Java meetas2', 'Antanas Sadauskas', 'testuojam', 'SHORT', 'IN_PERSON', '2023-01-20 10:30:00', '2023-01-20 10:45:00'),
+             ('Java meetas2', 'Antanas Sadauskas', 'testuojam', 'SHORT', 'IN_PERSON', '2023-01-20 11:00:00', '2023-01-20 12:00:00');
+    </sql>
+  </changeSet>
+
+
+</databaseChangeLog>
