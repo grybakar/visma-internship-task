@@ -159,3 +159,6 @@ replay_pid*
 /.sonar/
 
 # End of https://www.toptal.com/developers/gitignore/api/sonar,java,intellij
+/target/
+/.mvn/
+/.idea/
