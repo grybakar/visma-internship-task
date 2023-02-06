@@ -3,13 +3,13 @@ com\training\vismainternshiptask\enums\PersonNumFilterType.class
 com\training\vismainternshiptask\controller\PersonController.class
 com\training\vismainternshiptask\repository\PersonRepository.class
 com\training\vismainternshiptask\service\PersonService.class
-com\training\vismainternshiptask\converter\TypeConverter.class
 com\training\vismainternshiptask\dto\AddPersonDto.class
 com\training\vismainternshiptask\exception\VismaException.class
 com\training\vismainternshiptask\repository\MeetingRepository.class
 com\training\vismainternshiptask\model\Person.class
 com\training\vismainternshiptask\enums\Type.class
 com\training\vismainternshiptask\mapper\MeetingDtoMapper.class
+com\training\vismainternshiptask\model\Meeting$MeetingBuilder.class
 com\training\vismainternshiptask\service\MeetingService.class
 com\training\vismainternshiptask\dto\ErrorResponse$ErrorResponseBuilder.class
 com\training\vismainternshiptask\repository\MeetingCriteriaRepository.class
@@ -19,6 +19,7 @@ com\training\vismainternshiptask\enums\Category.class
 com\training\vismainternshiptask\dto\ErrorResponse.class
 com\training\vismainternshiptask\exception\GlobalExceptionHandler.class
 com\training\vismainternshiptask\controller\MeetingController.class
+com\training\vismainternshiptask\dto\MeetingDto$MeetingDtoBuilder.class
 com\training\vismainternshiptask\dto\MeetingSearchCriteria.class
 com\training\vismainternshiptask\VismaInternshipTaskApplication.class
 com\training\vismainternshiptask\dto\MeetingDto.class

@@ -2,6 +2,8 @@ package com.training.vismainternshiptask.controller;
 
 import com.training.vismainternshiptask.dto.AddPersonDto;
 import com.training.vismainternshiptask.service.PersonService;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("api/persons")
 @AllArgsConstructor
+@OpenAPIDefinition()
 public class PersonController {
 
   private final PersonService personService;
 
+  @Operation(summary = "Add a person to a meeting")
   @Transactional
   @PutMapping("/{personId}/meeting/{meetingId}")
   public ResponseEntity<AddPersonDto> addPersonToMeeting(
